@@ -11,7 +11,7 @@ GET /_analyze
     "text": "黑马程序员学习叼你java太棒了习大大屏蔽词A"
 }
 
-/*分析：：：
+# 分析：：：
 {
     "age": 21,
     "weight": 52.1,
@@ -24,18 +24,18 @@ GET /_analyze
         "lastName": "赵"
 }
 }
-对应的每个字段映射（mapping）：
+#对应的每个字段映射（mapping）：
 
-- age：类型为 integer；参与搜索，因此需要index为true；无需分词器
-- weight：类型为float；参与搜索，因此需要index为true；无需分词器
-- isMarried：类型为boolean；参与搜索，因此需要index为true；无需分词器
-- info：类型为字符串，需要分词，因此是text；参与搜索，因此需要index为true；分词器可以用ik_smart
-- email：类型为字符串，但是不需要分词，因此是keyword；不参与搜索，因此需要index为false；无需分词器
-- score：虽然是数组，但是我们只看元素的类型，类型为float；参与搜索，因此需要index为true；无需分词器
-- name：类型为object，需要定义多个子属性
-- name.firstName；类型为字符串，但是不需要分词，因此是keyword；参与搜索，因此需要index为true；无需分词器
-- name.lastName；类型为字符串，但是不需要分词，因此是keyword；参与搜索，因此需要index为true；无需分词器*/
-PUT /索引库名
+# - age：类型为 integer；参与搜索，因此需要index为true；无需分词器
+# - weight：类型为float；参与搜索，因此需要index为true；无需分词器
+# - isMarried：类型为boolean；参与搜索，因此需要index为true；无需分词器
+# - info：类型为字符串，需要分词，因此是text；参与搜索，因此需要index为true；分词器可以用ik_smart
+# - email：类型为字符串，但是不需要分词，因此是keyword；不参与搜索，因此需要index为false；无需分词器
+# - score：虽然是数组，但是我们只看元素的类型，类型为float；参与搜索，因此需要index为true；无需分词器
+# - name：类型为object，需要定义多个子属性
+# - name.firstName；类型为字符串，但是不需要分词，因此是keyword；参与搜索，因此需要index为true；无需分词器
+# - name.lastName；类型为字符串，但是不需要分词，因此是keyword；参与搜索，因此需要index为true；无需分词器*/
+# PUT /索引库名
 {
     "mappings": {
         "properties": {
@@ -78,7 +78,7 @@ PUT /索引库名/_mapping
 
 DELETE /索引库名
 
-==================================================================
+# =============================================================
 
 POST /索引库名/_doc/1
 {
@@ -94,7 +94,7 @@ GET /heima/_doc/1
 
 DELETE /heima/_doc/1
 
-全量修改
+# 全量修改
 PUT /heima/_doc/1
 {
 "info": "一个好人个屁",
@@ -105,7 +105,7 @@ PUT /heima/_doc/1
 }
 }
 
-增量修改
+# 增量修改
 POST /heima/_update/1
 {
 "doc": {
@@ -113,5 +113,5 @@ POST /heima/_update/1
 }
 }
 
-- location：地理坐标，里面包含精度、纬度
-- all：一个组合字段，其目的是将多字段的值 利用copy_to合并，提供给用户搜索
+# location：地理坐标，里面包含精度、纬度
+# all：一个组合字段，其目的是将多字段的值 利用copy_to合并，提供给用户搜索
