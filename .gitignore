@@ -1,0 +1,7 @@
+# Project exclude paths
+/consumer/target/
+/easyExcel/target/
+/elasticsearch/target/
+/jedis/target/
+/publisher/target/
+/springRedis/target/

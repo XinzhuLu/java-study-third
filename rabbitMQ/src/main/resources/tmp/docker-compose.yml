@@ -1,0 +1,50 @@
+version: '2.2'
+services:
+  mq01:
+    image: rabbitmq:3.8-management
+    container_name: mq01
+    hostname: mq01
+    ports:
+      - 8071:5672
+      - 8081:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+      - RABBITMQ_ERLANG_COOKIE=ABCDABCDABCD
+    volumes:
+      - /tmp/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+    networks:
+      - rabbitmq
+  mq02:
+    image: rabbitmq:3.8-management
+    container_name: mq02
+    hostname: mq02
+    ports:
+      - 8072:5672
+      - 8082:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+      - RABBITMQ_ERLANG_COOKIE=ABCDABCDABCD
+    volumes:
+      - /tmp/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+    networks:
+      - rabbitmq
+  mq03:
+    image: rabbitmq:3.8-management
+    container_name: mq03
+    hostname: mq03
+    ports:
+      - 8073:5672
+      - 8083:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+      - RABBITMQ_ERLANG_COOKIE=ABCDABCDABCD
+    volumes:
+      - /tmp/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+    networks:
+      - rabbitmq
+networks:
+  rabbitmq:
+    driver: bridge

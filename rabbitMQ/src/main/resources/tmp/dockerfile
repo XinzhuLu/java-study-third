@@ -1,0 +1,41 @@
+cd /tmp
+
+docker run -d --net mq-net \
+-v /tmp/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf \
+-e RABBITMQ_DEFAULT_USER=guest \
+-e RABBITMQ_DEFAULT_PASS=guest \
+-e RABBITMQ_ERLANG_COOKIE=ABCDEFG \
+--name mq1 \
+--hostname mq1 \
+-p 8071:5672 \
+-p 8081:15672 \
+rabbitmq:3.8-management
+
+cd /tmp
+
+docker run -d --net mq-net \
+-v /tmp/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf \
+-e RABBITMQ_DEFAULT_USER=guest \
+-e RABBITMQ_DEFAULT_PASS=guest \
+-e RABBITMQ_ERLANG_COOKIE=ABCDEFG \
+--name mq2 \
+--hostname mq2 \
+-p 8072:5672 \
+-p 8082:15672 \
+rabbitmq:3.8-management
+
+cd /tmp
+
+docker run -d --net mq-net \
+-v /tmp/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf \
+-e RABBITMQ_DEFAULT_USER=guest \
+-e RABBITMQ_DEFAULT_PASS=guest \
+-e RABBITMQ_ERLANG_COOKIE=ABCDEFG \
+--name mq3 \
+--hostname mq3 \
+-p 8073:5672 \
+-p 8083:15672 \
+rabbitmq:3.8-management
+
+cd /tmp
+docker-compose up -d
