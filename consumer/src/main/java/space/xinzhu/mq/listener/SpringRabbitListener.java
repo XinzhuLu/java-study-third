@@ -1,5 +1,6 @@
 package space.xinzhu.mq.listener;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.ExchangeTypes;
 import org.springframework.amqp.rabbit.annotation.Exchange;
 import org.springframework.amqp.rabbit.annotation.Queue;
@@ -16,6 +17,7 @@ import java.time.LocalTime;
  * Update for ??? on ???? / ?? / ?? by ???
  **/
 @Component
+@Slf4j
 public class SpringRabbitListener {
 
     //simple-----------------------------------------------
@@ -83,4 +85,8 @@ public class SpringRabbitListener {
     public void listenTopicQueue2(String msg){
         System.out.println("消费者接收到topic.queue2的消息：【" + msg + "】");
     }
+
+
+
+
 }
