@@ -9,3 +9,10 @@ spring:
     virtual-host: / # 虚拟主机
     username: xinzhu # 用户名
     password: xinzhu # 密码
+    publisher-confirm-type: correlated #异步回调，定义ConfirmCallback，MQ返回结果时会回调这个ConfirmCallback
+    # publisher-confirm-type: simple 同步等待confirm结果，直到超时
+    publisher-returns: true # 开启publish-return功能，同样是基于callback机制，不过是定义ReturnCallback
+    template:
+      mandatory: true # 定义消息路由失败时的策略。true，则调用ReturnCallback；false：则直接丢弃消息
+    # 集群模式
+    #addresses: 192.168.100.150:8071, 192.168.100.150:8072, 192.168.100.150:8073
